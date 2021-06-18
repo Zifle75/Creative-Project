@@ -26,7 +26,7 @@ const photoSchema = new mongoose.Schema({
   },
   path: String,
   title: String,
-  description: String,
+// Description was here.  
   created: {
     type: Date,
     default: Date.now
@@ -51,7 +51,7 @@ router.post("/", validUser, upload.single('photo'), async (req, res) => {
     user: req.user,
     path: "/images/" + req.file.filename,
     title: req.body.title,
-    description: req.body.description,
+// Description was here    
   });
   try {
     await photo.save();

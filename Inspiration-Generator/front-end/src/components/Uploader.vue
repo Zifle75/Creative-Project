@@ -7,9 +7,9 @@
         <fieldset>
           <input v-model="title" placeholder="Title">
         </fieldset>
-        <fieldset>
-          <textarea v-model="description" placeholder="Description"></textarea>
-        </fieldset>
+        
+ 
+        
         <fieldset>
           <div class="imageInput" @click="chooseImage">
             <img v-if="url" :src="url" />
@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       title: '',
-      description: '',
+      
       url: '',
       file: null,
       error: '',
@@ -69,12 +69,12 @@ export default {
         const formData = new FormData();
         formData.append('photo', this.file, this.file.name);
         formData.append('title', this.title);
-        formData.append('description', this.description);
+        
         await axios.post("/api/photos", formData);
         this.file = null;
         this.url = "";
         this.title = "";
-        this.description = "";
+        
         this.$emit('uploadFinished');
       } catch (error) {
         this.error = "Error: " + error.response.data.message;
@@ -92,7 +92,7 @@ export default {
 .modal-mask {
   position: fixed;
   z-index: 9998;
-  top: 0;
+  top: 15;
   left: 0;
   width: 100%;
   height: 100%;
@@ -143,7 +143,6 @@ export default {
 /* Form */
 
 form {
-  margin-top: 50px;
   font-size: 11pt;
 }
 
