@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // connect to the mongodb database
-mongoose.connect('mongodb://localhost:27017/photobomb', {
+mongoose.connect('mongodb://localhost:27017/InspirationGenerator', {
   useUnifiedTopology: true,
   useNewUrlParser: true
 });
@@ -40,6 +40,10 @@ app.use("/api/users", users.routes);
 const photos = require("./photos.js");
 app.use("/api/photos", photos.routes);
 
+
+// import the texts module and setup its API path
+const texts = require("./texts.js");
+app.use("/api/texts", texts.routes);
 
 app.listen(3002, () => console.log('Server listening on port 3002!'));
 
